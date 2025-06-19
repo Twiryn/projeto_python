@@ -32,7 +32,7 @@ def adicionar(arq,nome='desconhecido',idade=0):
     try:
         a=open(arq,'at')
     except:
-        print('Erro em adicionar uma nova pessoa')
+        print('Erro em adicionar uma nova pesso')
     else:
         try:
             a.write(f'{nome} ; {idade}\n')
