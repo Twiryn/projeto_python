@@ -1,4 +1,5 @@
 import pandas as pd
+
 def Arquivo_Existe():
     try:
         a = open('Contatos.txt','rt')
@@ -16,6 +17,7 @@ def Criar_arquivo():
     else:
        print('A LISTA DE CONTATOS NAO EXISTE E SERA CRIADA UMA...')
        print('LISTA DE CONTATOS CRIADA COM SUCESSO!')
+    
 def Adicionar_Contato(pessoa):
     try:
         a = open('Contatos.txt', 'at')
@@ -30,17 +32,16 @@ def Adicionar_Contato(pessoa):
             print(f'CONTATO ADICIONADO COM SUCESSO')
 def Listar_contatos():
     try:
-     df=pd.read_csv('Contatos.txt',sep='\t', header=0)
+     df=pd.read_csv('Contatos.txt',sep=';', header=None,names=['NOME','TEL', 'EMAIL'])
     except FileNotFoundError:
         print('Arquivo nao encontrado')
     else:
         print(df)
-def Remover_contatos(contato):
+def Remover_contatos(excluido):
     try:
-     df=pd.read_csv('Contatos.txt',sep='\t', header=0)
-    except FileNotFoundError:
-        print('Arquivo nao encontrado')
-    else:
-        df.drop(contato)
-        if not contato:
-            print('Nao existe este contato')
+     df=pd.read_csv('Contatos.txt',sep=';', header=None,names=['NOME','TEL', 'EMAIL'])
+     df_removido=df.drop(index=excluido)
+     df_removido.to_csv('Contatos.txt',sep=';', header=False, index=False)
+     print('CONTATO REMOVIDO')
+    except:
+        print('ALGO DEU ERRADO')
