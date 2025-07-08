@@ -4,4 +4,4 @@ class Agenda_Contatos:
         self.telefone = telefone
         self.email = email
     def __str__(self):
-        return f'NOME:{self.nome} ; TEL:{self.telefone} ; EMAIL:{self.email}\n'
+        return f'{self.nome} ;{self.telefone} ; {self.email}\n'
