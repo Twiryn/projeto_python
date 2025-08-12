@@ -22,6 +22,21 @@ while True:
         print(i)
        session.close()
        print('='*30)
+    if escolha == 3:
+      nome=input('Qual será o aluno atualizado:')
+      busca=session.query(Aluno).filter_by(nome=nome).first()
+      print(busca)
+      novo_nome=input('Qual sera o novo nome?')
+      novo_email=input('Qual sera o novo email')
+      novo_curso=input('Qual sera o novo curso?')
+      busca.nome=novo_nome
+      busca.email=novo_email
+      busca.curso=novo_curso
+      session.add(busca)
+      print('ALUNO ATUALIZADO')
+      menu(busca)
+      session.commit()
+      session.close()
     elif escolha == 5:
         print('\033[31mFIM DO PROGRAMA\033[m')
         break
